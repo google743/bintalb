@@ -14,7 +14,7 @@
   body{margin:0;background:var(--surface);color:var(--text);
     font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
   .sheet{max-width:880px;margin:0 auto;padding:0 18px 56px;}
-  .hero{position:relative;margin:0 -18px 0;padding:46px 34px 64px;
+  .hero{position:relative;margin:0 -18px 0;padding:46px 34px 64px 160px;
     background:radial-gradient(120% 140% at 90% -20%,rgba(70,211,234,.35),transparent 55%),
     linear-gradient(155deg,var(--deep),var(--ink));color:#EAF8FC;overflow:hidden;}
   .hero::after{content:"";position:absolute;left:0;right:0;bottom:42px;height:1px;
@@ -29,6 +29,15 @@
     padding:8px 16px;border-radius:999px;font-size:14px;color:#DDF3F8;}
   .hero .meta b{font-family:"JetBrains Mono",monospace;color:var(--aqua-br);font-size:16px;}
   .wave{position:absolute;left:0;right:0;bottom:-1px;display:block;color:var(--surface);}
+  .brand{position:absolute;top:30px;left:34px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;z-index:3;}
+  .brand-logo{background:#fff;border-radius:14px;padding:9px 12px;box-shadow:0 10px 24px -14px rgba(0,0,0,.5);
+    border:1px solid rgba(255,255,255,.5);}
+  .brand-logo img{display:block;width:96px;height:96px;object-fit:contain;}
+  .date-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);padding:6px 13px;border-radius:999px;font-size:13px;color:#DDF3F8;}
+  .date-chip svg{color:var(--aqua-br);flex:0 0 auto;}
+  .date-chip b{font-weight:600;color:#EAF8FC;}
+  @media (max-width:560px){.brand{top:22px;left:22px;}.brand-logo img{width:68px;height:68px;}.hero h1{margin-top:8px;}}
   .msg{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;
     margin:-34px 0 40px;position:relative;z-index:2;box-shadow:0 18px 40px -28px rgba(11,59,76,.45);}
   .msg-tag{display:inline-block;font-family:"Readex Pro",sans-serif;font-weight:600;font-size:13px;
@@ -69,7 +78,7 @@
   .tile-map svg{flex:0 0 auto;}
   .foot{text-align:center;margin-top:14px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;}
   .foot b{color:var(--deep);font-family:"Readex Pro",sans-serif;}
-  @media (max-width:560px){.hero h1{font-size:30px;} .hero{padding:36px 22px 56px;} .tiles{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.hero h1{font-size:30px;} .hero{padding:36px 22px 56px 110px;} .tiles{grid-template-columns:1fr 1fr;}}
   @media (max-width:400px){.tiles{grid-template-columns:1fr;}}
   @media (prefers-reduced-motion:reduce){.tile{transition:none;}}
   @media print{body{background:#fff;} .tile:hover{transform:none;box-shadow:none;}
@@ -79,6 +88,10 @@
 <body>
 <div class="sheet">
   <header class="hero">
+    <div class="brand">
+      <div class="brand-logo"><img src="assets/logo.png" alt="شعار بن طالب"></div>
+      <span class="date-chip"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 7v10H5V9h14z"/></svg><b id="today"></b></span>
+    </div>
     <p class="eyebrow">شركة عبدالله بن طالب لبرك السباحة</p>
     <h1>دليل رموز الفروع</h1>
     <p>مرجع موحّد لرموز فروعنا على خرائط Google، لتسهيل التواصل والإدارة وسرعة التعديل.</p>
@@ -95,7 +108,7 @@
     <p class="hint"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg></p>
     <p class="sign">شاكرين ومقدّرين لكم حُسن تعاونكم معنا. — إدارة الحضور الرقمي</p>
   </div>
-  
+
     <section class="lane">
       <div class="lane-head">
         <h2 class="lane-city">الرياض</h2>
@@ -103,49 +116,49 @@
       </div>
       <div class="rope"></div>
       <div class="tiles">
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%20%D8%B4%D8%B1%D9%83%D8%A9%20%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D9%84%D9%87%20%D8%A8%D9%86%20%D8%B7%D8%A7%D9%84%D8%A8%20%D9%84%D8%A8%D8%B1%D9%83%20%D8%A7%D9%84%D8%B3%D8%A8%D8%A7%D8%AD%D8%A9%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/UtaXD7Hte06HHRCpL" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-RYD-01</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>طريق أنس بن مالك</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
           <div class="tile-map"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg><span>افتح في خرائط Google</span></div>
         </a>
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%207643%20%D8%A7%D9%84%D8%B7%D8%B1%D9%8A%D9%82%20%D8%A7%D9%84%D8%AF%D8%A7%D8%A6%D8%B1%D9%8A%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%20%D8%A7%D9%84%D9%81%D8%B1%D8%B9%D9%8A%20Riyadh%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/E0wSgLvya0gz9fe5j" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-RYD-02</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>حي نمار، 2727</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
           <div class="tile-map"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg><span>افتح في خرائط Google</span></div>
         </a>
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%20Prince%20Sultan%20Bin%20Abdulaziz%20Rd%2C%20Al%20Olaya%2C%20Riyadh%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/8PDpaTEYiqFYsBMfI" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-RYD-03</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>طريق الأمير سلطان، العليا</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
           <div class="tile-map"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg><span>افتح في خرائط Google</span></div>
         </a>
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%20Al%20Thoumamah%20Rd%2C%20Ar%20Rimal%20Riyadh%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/4pcemJX9drYQV1ipd" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-RYD-04</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>طريق الثمامة، الرمال</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">056 648 0922</span></div>
           <div class="tile-map"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg><span>افتح في خرائط Google</span></div>
         </a>
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%20King%20Abdul%20Aziz%20Branch%20Rd%2C%20Al%20Wurud%20Riyadh%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/k6CauI0ENKMJr7ST7" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-RYD-05</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>طريق فرع الملك عبدالعزيز، الورود</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
           <div class="tile-map"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg><span>افتح في خرائط Google</span></div>
         </a>
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%20REMA2687%20Riyadh%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/VLvf75ttqoHf6bVun" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-RYD-06</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>طريق فرع عمر بن عبدالعزيز</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">059 662 2987</span></div>
           <div class="tile-map"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg><span>افتح في خرائط Google</span></div>
         </a>
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%20Eastern%20Ring%20Rd%2C%20Al%20Quds%20Riyadh%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/HKLYMrkzTN5q9wmdi" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-RYD-07</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>الطريق الدائري الشرقي، القدس</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
           <div class="tile-map"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg><span>افتح في خرائط Google</span></div>
         </a>
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%20Al%20Takhassousi%2C%20Al%20Mohammadiyyah%20Riyadh%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/gCMTndDyMnotuC8oH" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-RYD-08</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>التخصصي، المحمدية</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
@@ -159,19 +172,19 @@
       </div>
       <div class="rope"></div>
       <div class="tiles">
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%20JHND4447%D8%8C%204447%20%D8%AC%D8%AF%D8%A9%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/p8fCaHLtwzNWdSWjR" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-JED-01</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>6765 طريق الملك سعود</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">059 668 7724</span></div>
           <div class="tile-map"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg><span>افتح في خرائط Google</span></div>
         </a>
-        <a class="tile" href="https://share.google/TQMNtsiSbgJKLocAO" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/XQVOwihqgYRtaji0T" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-JED-02</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>8169 شارع حراء</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">056 612 1922</span></div>
           <div class="tile-map"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3l-.2 0L15 5.1 9 3 3.6 4.8c-.2.1-.4.3-.4.5V20.5c0 .3.2.5.5.5l.2 0L9 18.9l6 2.1 5.4-1.8c.2-.1.4-.3.4-.5V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg><span>افتح في خرائط Google</span></div>
         </a>
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%208399%20Al%20Amen%20Al%20Aam%20Jeddah%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/ekwgd0A64fZwGdRkg" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-JED-03</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>سوق غراب</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">056 360 4354</span></div>
@@ -185,7 +198,7 @@
       </div>
       <div class="rope"></div>
       <div class="tiles">
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%205466%20%D8%B7%D8%B1%D9%8A%D9%82%20%D8%A3%D8%A8%D9%8A%20%D8%A8%D9%83%D8%B1%20%D8%A7%D9%84%D8%B5%D8%AF%D9%8A%D9%82%20%D8%B9%D9%86%D9%8A%D8%B2%D8%A9%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/Q3IpwFo5ttByyttEZ" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-UNZ-01</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>5466 طريق أبي بكر الصديق</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
@@ -199,7 +212,7 @@
       </div>
       <div class="rope"></div>
       <div class="tiles">
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%202730%D8%B7%D8%B1%D9%8A%D9%82%20%D8%A7%D9%84%D9%85%D9%84%D9%83%20%D8%B3%D9%84%D9%85%D8%A7%D9%86%20%D8%A8%D9%86%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D8%B9%D8%B2%D9%8A%D8%B2%20Sakaka%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/8B5Lk2HqGKwQwaUfY" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-SKK-01</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>حي المحمدية</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
@@ -213,7 +226,7 @@
       </div>
       <div class="rope"></div>
       <div class="tiles">
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%208936%20Buraydah%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/4Rpd6kAZv6k79nOjT" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-BRD-01</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>حي 8936</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
@@ -227,7 +240,7 @@
       </div>
       <div class="rope"></div>
       <div class="tiles">
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%208678%20Abha%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/uDCd0JXOUuz44kUVJ" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-ABH-01</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>3585 طريق الملك فهد</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">9200 13334</span></div>
@@ -241,7 +254,7 @@
       </div>
       <div class="rope"></div>
       <div class="tiles">
-        <a class="tile" href="https://www.google.com/maps/search/?api=1&query=Abdullah%20Bin%20Taleb%20Swimming%20Pool%2075RX%2BCPR%20Al%20Khobar%20Saudi%20Arabia" target="_blank" rel="noopener">
+        <a class="tile" href="https://share.google/Dtv4YhcpmQtPAUWY9" target="_blank" rel="noopener">
           <div class="tile-code" dir="ltr">BT-KHB-01</div>
           <div class="tile-loc"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>الشارع الرابع</span></div>
           <div class="tile-ph"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1z"/></svg><span dir="ltr">059 665 3000</span></div>
@@ -253,5 +266,13 @@
     رمز كل فرع = <span dir="ltr" style="font-family:'JetBrains Mono',monospace">BT</span> + اختصار المدينة + ترتيب الفرع
   </div>
 </div>
+<script>
+  (function(){
+    var d=new Date();
+    var s=d.toLocaleDateString('ar-SA-u-ca-islamic',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    var g=d.toLocaleDateString('ar-SA',{day:'numeric',month:'long',year:'numeric'});
+    document.getElementById('today').textContent=g;
+  })();
+</script>
 </body>
 </html>
